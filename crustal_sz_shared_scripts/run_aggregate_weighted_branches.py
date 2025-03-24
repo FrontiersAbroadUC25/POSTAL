@@ -436,8 +436,8 @@ if make_hazcurves:
 
     print(f"\nMaking hazard curves...")
     if single_branch:
-        out_dir = f"{out_version_results_directory}/sites{single_branch}/hazard_curves{outfile_extension}"
-        PPE_filepath = f"../{out_version_results_directory}/sites{single_branch}/{branch_key}_cumu_PPE.h5"
+        out_dir = f"{out_version_results_directory}/sites{single_branch[0]}/hazard_curves{outfile_extension}"
+        PPE_filepath = f"../{out_version_results_directory}/sites{single_branch[0]}/{branch_key[0]}_cumu_PPE.h5"
     else:
         out_dir =  f"{out_version_results_directory}/weighted_mean_figures"
     print(f"Output Directory: {out_dir}")
