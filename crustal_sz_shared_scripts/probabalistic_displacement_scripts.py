@@ -320,10 +320,17 @@ def prepare_random_arrays(branch_site_disp_dict_file, randdir, time_interval, n_
         print(f'\tPreparing {n_samples} Poissonian Scenarios for {n_ruptures} ruptures...')
         rng = np.random.default_rng()
         for interval in time_interval:
-            scenarios = csc_array(rng.poisson(float(interval) * rates, size=(int(n_samples), n_ruptures)))
-
-            with open(f"{randdir}/{interval}_yr_scenarios.pkl", "wb") as fid:
-                pkl.dump(scenarios, fid)
+            regenerate_scenarios = True
+            if os.path.exists(f"{randdir}/{interval}_yr_scenarios.pkl"):
+                with open(f"{randdir}/{interval}_yr_scenarios.pkl", "rb") as fid:
+                    scenarios = pkl.load(fid).toarray()
+                    prep_samples, prep_ruptures = scenarios.shape
+                    if prep_samples == n_samples and prep_ruptures == n_ruptures:
+                        regenerate_scenarios = False
+            if regenerate_scenarios:
+                scenarios = csc_array(rng.poisson(float(interval) * rates, size=(int(n_samples), n_ruptures)))
+                with open(f"{randdir}/{interval}_yr_scenarios.pkl", "wb") as fid:
+                    pkl.dump(scenarios, fid)
 
 
 def get_cumu_PPE(slip_taper, model_version_results_directory, branch_site_disp_dict, site_ids, n_samples,
