@@ -1,4 +1,4 @@
-name: occ-coseismic
+name: postal
 channels:
   - defaults
   - conda-forge
