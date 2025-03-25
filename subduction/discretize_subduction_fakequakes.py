@@ -13,10 +13,13 @@ This script will discretise the subduction zone into patches based on the fake q
 #### USER INPUT #####
 # Define whch subduction zone (hikkerk / puysegur)
 sz_zone = 'hikkerk'
+locking_model = '_trenchlock'
 
 if not sz_zone in ['hikkerk', 'puysegur']:
     print("Please define a valid subduction zone (hikkerk / puysegur).")
     exit()
+
+sz_zone += locking_model
 
 #Sensitivity testing for subduction interface depth
 steeper_dip = False
