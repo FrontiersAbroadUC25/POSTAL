@@ -16,7 +16,7 @@ slip_taper = False                           # True or False, only matters if cr
 fault_type = "sz"                       # "crustal", "sz" or "py"; only matters for single fault model + getting name of paired crustal subduction pickle files
 crustal_mesh_version = "_CFM"           # Name of the crustal mesh model version (e.g. "_CFM", "_CFM_steeperdip", "_CFM_gentlerdip")
 crustal_site_names = "_EastCoastNI_10km"   # Name of the sites geojson
-sz_site_names = ["_JDE_sites"]       # Name of the sites geojson
+sz_site_names = ["_EastCoastNI_10km"]       # Name of the sites geojson
 sz_list_order = ["sz"]         # Order of the subduction zones
 sz_names = ["hikkerk"]   # Name of the subduction zone
 outfile_extension = ""               # Optional; something to tack on to the end so you don't overwrite files
@@ -25,11 +25,12 @@ testing = False   # Impacts number of samples runs, job time etc
 fakequakes = True  # Use fakequakes for the subduction zone (applied only to hikkerk)
 
 # Processing Flags (True/False)
-single_branch = "_sz_fq_3lhb110"
+single_branch = ['_sz_fq_FA_tl_l', '_sz_fq_FA_tc_c', '_sz_fq_FA_p70_p70'] # Do these one at a time
+single_branch = ['_sz_fq_FA_tc_c']
 rate_scaling = False           # Do you want to calculate PPEs for a single branch with different rate scalings?
 paired_crustal_sz = False      # Do you want to calculate the PPEs for a single fault model or a paired crustal/subduction model?
 load_random = True             # Do you want to uses the same grid for scenarios for each site, or regenerate a new grid for each site?
-calculate_fault_model_PPE = True   # Do you want to calculate PPEs for each branch?
+calculate_fault_model_PPE = False   # Do you want to calculate PPEs for each branch?
 remake_PPE = False            # Recalculate branch PPEs from scratch, rather than search for pre-existing files (useful if have to stop processing...)
 calculate_weighted_mean_PPE = False   # Do you want to weighted mean calculate PPEs?
 remake_weighted_PPE = False    # Recalculate weighted branch PPEs from scratch, rather than search for pre-existing files (useful if have to stop processing...)
@@ -59,7 +60,7 @@ crustal_directory = "crustal"
 sz_directory = "subduction"
 results_directory = "results"
 figure_file_type_list = ["png", "pdf"]             # file types for figures
-figure_file_type_list = ["png"]
+# figure_file_type_list = ["png"]
 
 ## Set parameters based on user inputs
 if testing:
@@ -444,7 +445,7 @@ if make_hazcurves:
     if single_branch:
          plot_single_branch_haz_curves(
              PPE_dictionary=PPE_filepath, model_version_title=site_names_title,
-             exceed_type_list=["up", "down", "total_abs"], out_directory=out_dir,
+             exceed_type_list=["up", "down"], out_directory=out_dir,
              file_type_list=figure_file_type_list, slip_taper=slip_taper, plot_order=plot_order)   
     else:
         plot_weighted_mean_haz_curves(
