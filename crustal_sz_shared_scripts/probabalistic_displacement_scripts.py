@@ -433,6 +433,7 @@ def get_cumu_PPE(slip_taper, model_version_results_directory, branch_site_disp_d
             with h5.File(branch_site_disp_dict, "r") as branch_h5:
                 site_dict_i = hdf5_to_dict(branch_h5[site_of_interest])
                 site_dict_i["scaled_rates"] = branch_h5["scaled_rates"][:]
+            branch_h5 = h5.File(branch_site_disp_dict, "r")
         else:
             site_dict_i = branch_site_disp_dict[site_of_interest]
             site_dict_i["scaled_rates"] = branch_h5["scaled_rates"][:]

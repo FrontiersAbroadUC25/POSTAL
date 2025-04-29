@@ -14,7 +14,7 @@ If the sites listed in the CSV already have a greens function calculated, then t
 os.chdir(os.path.dirname(__file__))
 # Calculates greens functions along coastline at specified interval
 # Read in the geojson file from the NSHM inversion solution
-version_extension = "_JDE_sites"
+version_extension = "_wellington_1km"
 # NSHM_directory = "NZSHM22_InversionSolution-QXV0b21hdGlvblRhc2s6MTA3MTUy"
 steeper_dip, gentler_dip = False, False
 
@@ -22,7 +22,7 @@ steeper_dip, gentler_dip = False, False
 sz_zone = '_fq_hikkerk'
 
 # in list form for one coord or list of lists for multiple (in NZTM)
-csvfile = 'JDE_sites.csv'
+csvfile = 'wellington_1km_grid_use.csv'
 site_list_csv = os.path.join('..', 'sites', csvfile)
 sites_df = pd.read_csv(site_list_csv)
 

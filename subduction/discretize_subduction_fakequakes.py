@@ -9,7 +9,7 @@ import os
 """
 This script will discretise the subduction zone into patches based on the fake quakes fault geometry.
 """
-
+os.chdir(os.path.dirname(__file__))
 #### USER INPUT #####
 # Define whch subduction zone (hikkerk / puysegur)
 sz_zone = 'hikkerk'
@@ -19,7 +19,7 @@ if not sz_zone in ['hikkerk', 'puysegur']:
     print("Please define a valid subduction zone (hikkerk / puysegur).")
     exit()
 
-sz_zone += locking_model
+# sz_zone += locking_model
 
 #Sensitivity testing for subduction interface depth
 steeper_dip = False
