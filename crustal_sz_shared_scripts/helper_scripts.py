@@ -706,8 +706,10 @@ def get_NSHM_directories(fault_type_list, deformation_model='geologic and geodet
 
         elif fault_type == "sz":
             if fakequakes:
-                file_suffix_list_i = ["_sz_fq_3lhb110"]
-                NSHM_directory_list_i = ["sz_solutions/FakeQuakes_hk_3e10_locking_n5000_S10_N1_GR500_b1-1_N21-5_nIt500000_narchi10"]
+                file_suffix_list_i = ["_sz_fq_FA_tc_c", "_sz_fq_FA_tl_l", "_sz_fq_FA_p70_p70"]
+                NSHM_directory_list_i = ["sz_solutions/FrontiersAbroad_hk_trenchcreep_v_SDcreep_locking_n5000_S10_N1_GR500_b1-1_N21-5_nIt500000_narchi2",
+                                         "sz_solutions/FrontiersAbroad_hk_trenchlock_v_SDlock_locking_n5000_S10_N1_GR500_b1-1_N21-5_nIt500000_narchi2",
+                                         "sz_solutions/FrontiersAbroad_hk_plate70_v_SDplate70_locking_n5000_S10_N1_GR500_b1-1_N21-5_nIt500000_narchi2"]
             else:
                 file_suffix_list_i = ["_sz_NJk2", "_sz_NzEx", "_sz_NzE0"]
                 NSHM_directory_list_i = ["sz_solutions/NZSHM22_ScaledInversionSolution-QXV0b21hdGlvblRhc2s6MTA3Njk2",
