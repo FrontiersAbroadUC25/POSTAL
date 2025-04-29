@@ -705,7 +705,7 @@ def get_NSHM_directories(fault_type_list, deformation_model='geologic and geodet
                 NSHM_directory_list = NSHM_directory_list_i
 
         elif fault_type == "sz":
-            if fakequakes:
+            if fakequakes:   # HERE BE FILE PATHS
                 file_suffix_list_i = ["_sz_fq_3lhb110"]
                 NSHM_directory_list_i = ["sz_solutions/FakeQuakes_hk_3e10_locking_n5000_S10_N1_GR500_b1-1_N21-5_nIt500000_narchi10"]
             else:
